@@ -10,7 +10,7 @@ public class Task1 {
         double y;
 
 
-        public static double CalculateLength(Point pointFirst, Point pointSecond) {// функция подсчета длинны стороны треугольника по координатам двух точек
+        public static double сalculateLength(Point pointFirst, Point pointSecond) {// функция подсчета длинны стороны треугольника по координатам двух точек
 
             return Math.sqrt((pointSecond.x - pointFirst.x) *//реализую возведение в степень не с помощью Math.pow(), так как это наиболее оптимальная, с точки зрения скорости исполнения, реализация
                     (pointSecond.x - pointFirst.x) +
@@ -18,7 +18,7 @@ public class Task1 {
                             (pointSecond.y - pointFirst.y));
         }
 
-        public static boolean СheckСoordinate(double a, double b, double c) {//реализовал проверку на существование треугольника по его координатам
+        public static boolean сheckСoordinate(double a, double b, double c) {//реализовал проверку на существование треугольника по его координатам
             if ((a + b > c) &&
                     (a + c > b) &&
                     (c + b > a)) {
@@ -49,11 +49,11 @@ public class Task1 {
                 vertexC.y = s.nextDouble();
 
                 double triangleSquare;
-                double a = CalculateLength(vertexA, vertexB);//подсчет длин сторон
+                double a = сalculateLength(vertexA, vertexB);//подсчет длин сторон
 
-                double b = CalculateLength(vertexC, vertexB);
-                double c = CalculateLength(vertexC, vertexA);
-                if (СheckСoordinate(a, b, c) != false) {// проверка на корректность
+                double b = сalculateLength(vertexC, vertexB);
+                double c = сalculateLength(vertexC, vertexA);
+                if (сheckСoordinate(a, b, c) != false) {// проверка на корректность
                     double halfMeter = (a + b + c) / 2;// вычисление площади по формуле Герона
                     triangleSquare = Math.sqrt(halfMeter *
                             (halfMeter - a) *
