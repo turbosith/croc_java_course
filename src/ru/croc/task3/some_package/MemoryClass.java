@@ -1,4 +1,4 @@
-package ru.croc.task2.some_package;
+package ru.croc.task3.some_package;
 
 public class MemoryClass {
     private double bytesNumber;
@@ -10,7 +10,7 @@ public class MemoryClass {
 
     public void format() {//метод, форматирующий и выводящий на экран заданный размер в байтах в человекочитаемом виде
         int numberDivisions = 0;//количество делений на 1024
-        while (bytesNumber / 1024 >= 1&& numberDivisions<dataTypesArray.length-1) {//проверяем, сколько раз число делится на 1024
+        while (bytesNumber / 1024 >= 1) {//проверяем, сколько раз число делится на 1024
             numberDivisions += 1;
             bytesNumber /= 1024;
         }

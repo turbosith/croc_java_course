@@ -15,8 +15,8 @@ public class Task2 {
             System.out.println("Введите количество байт: ");
             Scanner s = new Scanner(System.in);
             double bytesNum = s.nextDouble();
-            MemoryClass size = new MemoryClass(bytesNum);//создание объекта Memory
             if (bytesNum > 0) {
+                MemoryClass size = new MemoryClass(bytesNum);//создание объекта Memory
                 size.format();//форматированный вывод
             } else if (bytesNum == 0) {//завершение работы
                 flag = false;
