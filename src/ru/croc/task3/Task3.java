@@ -31,12 +31,15 @@ public class Task3 {
                 minIndex = i;
             }
         }
+        int lastElement = array.length - 1;
+        System.out.println("макс " + max + " in " + maxIndex + "min " + min + " in " + minIndex + " " + lastElement);
         swap(array, maxIndex, array.length - 1);//изменение массива согласно условиям задания
+        if (minIndex == lastElement) {//поменяем индекс миинимума при возможной перестановке
+            minIndex = maxIndex;
+        }
         swap(array, minIndex, 0);
         for (int i = 0; i < array.length; i++) {
             System.out.print(array[i] + " ");
         }
-
-
     }
 }
