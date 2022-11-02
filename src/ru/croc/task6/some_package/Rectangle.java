@@ -1,6 +1,6 @@
-package ru.croc.task5.some_package;
+package ru.croc.task6.some_package;
 
-public class Rectangle extends Figure {
+public class Rectangle extends Figure implements Movable {
     int x1;
     int y1;
     int x2;
@@ -21,4 +21,17 @@ public class Rectangle extends Figure {
                 "<" + y2 + ">)";
     }
 
+    public boolean FindPoint(int x, int y) {
+        if ((x1 == x && y1 == y) | (x2 == x && y2 == y)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public void move(int dx, int dy) {
+        x1 = dx;
+        x2 = dy;
+    }
 }

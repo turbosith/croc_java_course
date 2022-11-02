@@ -1,4 +1,4 @@
-package ru.croc.task5.some_package;
+package ru.croc.task6.some_package;
 
 public class Figure {
     int[] coordinates;
@@ -14,4 +14,10 @@ public class Figure {
     public String toString() {
         return "Figure";
     }
+
+    public boolean FindPoint(int x, int y) {
+        return false;
+    }
+
+
 }

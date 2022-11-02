@@ -18,5 +18,6 @@ class AnnotatedImage {
     public Annotations[] getAnnotations() {
         return this.annotations;
     }
+
 }
 

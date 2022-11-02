@@ -1,6 +1,6 @@
-package ru.croc.task5.some_package;
+package ru.croc.task6.some_package;
 
-public class Circle extends Figure {
+public class Circle extends Figure implements Movable {
     int x0;
     int y0;
     int r;
@@ -16,5 +16,19 @@ public class Circle extends Figure {
         return "C (<" + x0 + ">, " +
                 "<" + y0 + ">)," +
                 " <" + r + ">";
+    }
+
+    public boolean FindPoint(int x, int y) {
+        if (x0 == x && y0 == y) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public void move(int dx, int dy) {
+        x0 = dx;
+        y0 = dy;
     }
 }
