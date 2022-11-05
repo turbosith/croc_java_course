@@ -1,4 +1,4 @@
-package ru.croc.task5.some_package;
+package ru.croc.task5.annotation_package;
 
 public class Annotations {
     Figure figure;
