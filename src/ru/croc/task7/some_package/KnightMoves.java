@@ -6,7 +6,7 @@ public class KnightMoves {
                 || Math.abs(end.getXCoordinate() - start.getXCoordinate()) == 2 && Math.abs(end.getYCoordinate() - start.getYCoordinate()) == 1;
     }
 
-    public static void moves(ChessPosition[] positions) throws IllegalMoveException {
+    public static void moves(ChessPosition... positions) throws IllegalMoveException {
         for (int i = 0; i < positions.length - 1; i++) {
             ChessPosition start = positions[i];
             ChessPosition end = positions[i + 1];
