@@ -1,15 +1,15 @@
-package ru.croc.task6.some_package;
+package ru.croc.task6.annotation_package;
 
-public class Circle extends Figure implements Movable {
+public class Circle extends Figure  {
     int x0;
     int y0;
     int r;
 
-    public Circle(int... coordinates) {
-        super(coordinates);
-        this.x0 = coordinates[0];
-        this.y0 = coordinates[1];
-        this.r = coordinates[2];
+    public Circle(int x0, int y0, int r) {
+
+        this.x0 = x0;
+        this.y0 = y0;
+        this.r = r;
     }
 
     public String toString() {
@@ -19,7 +19,7 @@ public class Circle extends Figure implements Movable {
     }
 
     public boolean FindPoint(int x, int y) {
-        if (x0 == x && y0 == y) {
+        if (Math.pow(x-x0,2) + Math.pow(y-y0,2)<Math.pow(r,2)) {
             return true;
         } else {
             return false;

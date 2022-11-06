@@ -1,12 +1,7 @@
-package ru.croc.task6.some_package;
+package ru.croc.task6.annotation_package;
 
-public class Figure {
+abstract class Figure implements Movable{
     int[] coordinates;
-
-    public Figure(int... coordinates) {
-        this.coordinates = coordinates;
-    }
-
     public int[] getCoordinates() {
         return coordinates;
     }
