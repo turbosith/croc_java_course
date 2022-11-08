@@ -1,9 +1,9 @@
 package ru.croc.task6;
 
-import ru.croc.task6.annotation_package.Annotation;
-import ru.croc.task6.annotation_package.Circle;
-import ru.croc.task6.annotation_package.Rectangle;
-import ru.croc.task6.annotation_package.AnnotatedImage;
+import ru.croc.task6.annotation.Annotation;
+import ru.croc.task6.annotation.Circle;
+import ru.croc.task6.annotation.Rectangle;
+import ru.croc.task6.annotation.AnnotatedImage;
 
 public class Task6 {
     public static void main(String[] args) {

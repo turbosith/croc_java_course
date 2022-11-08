@@ -1,4 +1,4 @@
-package ru.croc.task6.annotation_package;
+package ru.croc.task6.annotation;
 
 public class Circle extends Figure  {
     int x0;
@@ -18,7 +18,7 @@ public class Circle extends Figure  {
                 " <" + r + ">";
     }
 
-    public boolean FindPoint(int x, int y) {
+    public boolean findPoint(int x, int y) {
         if (Math.pow(x-x0,2) + Math.pow(y-y0,2)<Math.pow(r,2)) {
             return true;
         } else {

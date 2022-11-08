@@ -1,4 +1,4 @@
-package ru.croc.task5.annotation_package;
+package ru.croc.task6.annotation;
 
 public class Rectangle extends Figure {
     int x1;
@@ -21,4 +21,17 @@ public class Rectangle extends Figure {
                 "<" + y2 + ">)";
     }
 
+    public boolean findPoint(int x, int y) {
+        if (x > x1 && y > y1 && x < x2 && x < y2) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public void move(int dx, int dy) {
+        x1 = dx;
+        x2 = dy;
+    }
 }

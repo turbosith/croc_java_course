@@ -1,6 +1,6 @@
-package ru.croc.task6.annotation_package;
+package ru.croc.task5.annotation;
 
-public class Annotation {
+public class Annotations {
     Figure figure;
     String name;
 
@@ -20,7 +20,7 @@ public class Annotation {
         return figure;
     }
 
-    public Annotation(Figure figure, String name) {//конструктор, в котором задаётся объект класса Figure и его имя
+    public Annotations(Figure figure, String name) {//конструктор, в котором задаётся объект класса Figure и его имя
         this.figure = figure;
         this.name = name;
     }

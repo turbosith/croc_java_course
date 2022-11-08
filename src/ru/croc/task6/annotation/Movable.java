@@ -1,4 +1,4 @@
-package ru.croc.task6.annotation_package;
+package ru.croc.task6.annotation;
 
 public interface Movable {//интерфейс движения
 

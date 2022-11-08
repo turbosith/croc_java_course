@@ -1,4 +1,4 @@
-package ru.croc.task6.annotation_package;
+package ru.croc.task6.annotation;
 
 abstract class Figure implements Movable{
     int[] coordinates;
@@ -10,7 +10,7 @@ abstract class Figure implements Movable{
         return "Figure";
     }
 
-    public boolean FindPoint(int x, int y) {
+    public boolean findPoint(int x, int y) {
         return false;
     }
 

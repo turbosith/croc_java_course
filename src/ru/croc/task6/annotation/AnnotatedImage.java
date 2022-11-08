@@ -1,4 +1,4 @@
-package ru.croc.task6.annotation_package;
+package ru.croc.task6.annotation;
 
 public class AnnotatedImage {
 
@@ -22,7 +22,7 @@ public class AnnotatedImage {
 
     public Annotation findByPoint(int x, int y) {//поиск по координате
         for (int i = 0; i < annotations.length; i++) {
-            if (annotations[i].getFigure().FindPoint(x, y) == true) {
+            if (annotations[i].getFigure().findPoint(x, y) ) {
                 return annotations[i];
             }
         }
@@ -31,8 +31,10 @@ public class AnnotatedImage {
 
     public Annotation findByLabel(String label) {//поиск по подписи
         for (int i = 0; i < annotations.length; i++) {
-            if (annotations[i].getName().contains(label) == true) {
-                return annotations[i];
+            Annotation annotation=annotations[i];
+
+            if (annotation.getName().contains(label) ) {
+                return annotation;
             }
         }
         return null;
