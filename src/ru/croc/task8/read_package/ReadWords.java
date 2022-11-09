@@ -9,7 +9,12 @@ import java.io.Reader;
 
 public class ReadWords {
     String fileName;
-public ReadWords(String fileName){//конструктор, задающий имя файла
+
+    /**
+     *Создаёт новый {@code ReadWords}
+     * @param fileName - имя файла, количество слов которого надо посчитать
+     */
+    public ReadWords(String fileName){//конструктор, задающий имя файла
     this.fileName=fileName;
 }
 public int wordsNumber() throws IllegalMoveException, IOException {//метод подсчета слов в файле
