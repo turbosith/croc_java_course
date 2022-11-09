@@ -19,7 +19,7 @@ public int wordsNumber() throws IllegalMoveException, IOException {//метод 
         int counter=0;
         char previous=' ';
         while ((c = r.read()) != -1){
-           if(previous==' '|previous=='\n'&&(char)c!=' '&&(char)c!='\n'){
+           if((previous==' '|previous=='\n')&&(char)c!=' '&&c!=13){
                counter+=1;
            }
             previous=(char)c;
