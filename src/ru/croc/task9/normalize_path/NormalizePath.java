@@ -5,7 +5,7 @@ public class NormalizePath {
      * Нормализация пути
      *
      * @param path - путь, который должен быть нормализован
-     * @return
+     * @return - нормализованный путь
      */
     public String normalizePath(String path) {
         path = path.replaceAll("/./", "/");//удаляем все вхождения подстроки "./"
@@ -38,7 +38,7 @@ public class NormalizePath {
      *
      * @param path  - строка, в которой надо удалить слово
      * @param index - индекс последнего символа слова
-     * @return
+     * @return - строка с удалённым словом
      */
     private String deliteWordPart(String path, int index) {
 
@@ -61,7 +61,7 @@ public class NormalizePath {
      *
      * @param str   - строка, в которой надо удалить символ
      * @param index - индекс символа
-     * @return
+     * @return - строка с удалённым символом
      */
     private static String removeByIndex(String str, int index) {
         StringBuilder sb = new StringBuilder();
