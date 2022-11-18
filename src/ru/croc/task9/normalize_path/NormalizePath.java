@@ -10,7 +10,7 @@ public class NormalizePath {
     public String normalizePath(String path) {
         path = path.replaceAll("/./", "/");//удаляем все вхождения подстроки "./"
         for (int i = 0; i < path.length() - 3; i++) {
-            if (path.substring(i, i + 3).equals("../")) {//ищем вхождения подстроки "../"
+            if (path.startsWith("../", i)) {//ищем вхождения подстроки "../"
                 for (int j = i - 1; j > 0; j--) {//если нашли, то ищем слово слева
                     if (path.charAt(j) != '/' && path.charAt(j) != '.') {
                         int oldSize = path.length();//записываем текущий размер строки, чтобы потом актуализировать i
