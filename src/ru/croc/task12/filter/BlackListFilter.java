@@ -1,4 +1,4 @@
-package ru.croc.task12;
+package ru.croc.task12.filter;
 
 import java.util.List;
 import java.util.Set;
