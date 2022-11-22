@@ -32,14 +32,15 @@ public class CommentsFilter implements BlackListFilter {
                     if (blackWordWithoutFirstSymbolIndex != 1){
                         asciiFrontChar = (int) comment.charAt(blackWordWithoutFirstSymbolIndex - 2);
                     }
-                    if(blackWordWithoutFirstSymbolIndex + blackWordWithoutFirstSymbolIndex != comment.length() + 1)
+                    if(blackWordWithoutFirstSymbolIndex + blackWordWithoutFirstSymbol.length() != comment.length() + 1)
                              {
                         asciiBackChar = (int) comment.charAt(blackWordWithoutFirstSymbolIndex +
                                 blackWordWithoutFirstSymbol.length());
                     }
+
                     //проверка, не содержится ли наше слово с другом и не начинается ли оно с заглавной буквы
-                    if (isCharLetter(asciiFrontChar) |
-                            isCharLetter(asciiBackChar) |
+                    if (!(isCharLetter(asciiFrontChar)) &
+                            !(isCharLetter(asciiBackChar)) &
                             ((int) blackWord.charAt(0) !=
                                     (int) comment.indexOf(blackWordWithoutFirstSymbolIndex) + 31)) {
                         badComments.add(comment);//добавление в список плохих комментариев
