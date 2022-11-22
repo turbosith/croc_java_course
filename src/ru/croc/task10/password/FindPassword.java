@@ -11,14 +11,10 @@ public class FindPassword implements Runnable {
     private final int count; //количество частей
     private final int symbols; //количество символов пароля
     private final long countSymbols; // всего может быть паролей
-    private  volatile boolean findPassword = false;//флаг, нашли ли мы пароль
-
+    private volatile boolean findPassword = false;//флаг, нашли ли мы пароль
 
 
     private static final char[] HEX_DIGITS = "0123456789ABCDEF".toCharArray();
-
-
-
 
 
     /**
@@ -48,7 +44,7 @@ public class FindPassword implements Runnable {
         for (int i = 1; i <= symbols; ++i) {
             password[i - 1] = (int) (hex % 26);
             hex /= 26;
-            pass.append((char) ('a' + password[i-1]));
+            pass.append((char) ('a' + password[i - 1]));
         }
 
 
@@ -60,11 +56,10 @@ public class FindPassword implements Runnable {
         this.number = number;
         this.count = count;
         this.symbols = symbols;
-        countSymbols = (long)(Math.pow(26, symbols));
-        start= (countSymbols*(number - 1))/count;
-        end = (countSymbols*number)/count - 1;
+        countSymbols = (long) (Math.pow(26, symbols));
+        start = (countSymbols * (number - 1)) / count;
+        end = (countSymbols * number) / count - 1;
     }
-
 
 
 }
