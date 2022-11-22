@@ -18,9 +18,9 @@ public class Task12 {
         Set<String> blackList = new HashSet<>();
         blackList.add("devil");
         blackList.add("черт");
-        CommentsFilter commentsFilter=new CommentsFilter();
-        commentsFilter.filterComments(comments,blackList);
-        for (String comment:comments){
+        CommentsFilter commentsFilter = new CommentsFilter();
+        commentsFilter.filterComments(comments, blackList);
+        for (String comment : comments) {
             System.out.println(comment);
         }
     }

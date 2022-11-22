@@ -6,10 +6,9 @@ import java.util.Set;
 
 public class CommentsFilter implements BlackListFilter {
     /**
-     *
-     * @param comments list of comments; every comment
-     *                 is a sequence of words, separated
-     *                 by spaces, punctuation or line breaks
+     * @param comments  list of comments; every comment
+     *                  is a sequence of words, separated
+     *                  by spaces, punctuation or line breaks
      * @param blackList list of words that should not
      *                  be present in a comment
      */
@@ -29,12 +28,11 @@ public class CommentsFilter implements BlackListFilter {
 
                     int blackWordWithoutFirstSymbolIndex = comment.indexOf(blackWordWithoutFirstSymbol);
                     //проверка, можем ли мы получить предыдущий и последующий символы
-                    if (blackWordWithoutFirstSymbolIndex != 1){
-                        asciiFrontChar = (int) comment.charAt(blackWordWithoutFirstSymbolIndex - 2);
+                    if (blackWordWithoutFirstSymbolIndex != 1) {
+                        asciiFrontChar = comment.charAt(blackWordWithoutFirstSymbolIndex - 2);
                     }
-                    if(blackWordWithoutFirstSymbolIndex + blackWordWithoutFirstSymbol.length() != comment.length() + 1)
-                             {
-                        asciiBackChar = (int) comment.charAt(blackWordWithoutFirstSymbolIndex +
+                    if (blackWordWithoutFirstSymbolIndex + blackWordWithoutFirstSymbol.length() != comment.length() + 1) {
+                        asciiBackChar = comment.charAt(blackWordWithoutFirstSymbolIndex +
                                 blackWordWithoutFirstSymbol.length());
                     }
 
@@ -42,7 +40,7 @@ public class CommentsFilter implements BlackListFilter {
                     if (!(isCharLetter(asciiFrontChar)) &
                             !(isCharLetter(asciiBackChar)) &
                             ((int) blackWord.charAt(0) !=
-                                    (int) comment.indexOf(blackWordWithoutFirstSymbolIndex) + 31)) {
+                                    comment.indexOf(blackWordWithoutFirstSymbolIndex) + 31)) {
                         badComments.add(comment);//добавление в список плохих комментариев
                     }
                 }
@@ -52,17 +50,15 @@ public class CommentsFilter implements BlackListFilter {
     }
 
     /**
-     *Проверяет буква сивол или нет(работает на английском и русском языках)
+     * Проверяет буква сивол или нет(работает на английском и русском языках)
+     *
      * @param asciiChar ASCII код символа
      * @return буква это или нет
      */
     public boolean isCharLetter(int asciiChar) {
-        if ((asciiChar > 64 && asciiChar < 91) |
+        return (asciiChar > 64 && asciiChar < 91) |
                 (asciiChar > 96 && asciiChar < 123) |
-                (asciiChar > 1039 && asciiChar < 1104))
-            return true;
-        else
-            return false;
+                (asciiChar > 1039 && asciiChar < 1104);
     }
 }
 
