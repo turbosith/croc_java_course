@@ -5,7 +5,7 @@ import java.util.*;
 public class MovieRecommendations {
     private Map<Integer, String> films = new HashMap<>();
     private List<int[]> users;
-    private List<Integer> userMovies;
+    private final List<Integer> userMovies;
 
     /**
      * Создаёт @code MovieRecommendations
@@ -26,8 +26,7 @@ public class MovieRecommendations {
         this.users = users;
         List<int[]> similarUsers = coincidences();
         Set<Integer> moviesWithoutRepetions = removeRepetitions(similarUsers);
-        String finalRecomendation = finalRecomendation(moviesWithoutRepetions);
-        return finalRecomendation;
+        return finalRecomendation(moviesWithoutRepetions);
     }
 
     /**
@@ -42,12 +41,12 @@ public class MovieRecommendations {
             countFilms.put(films.get(film), 0);
         }
         for (int[] user : users) {
-            for (int i = 0; i < user.length; i++) {
-                Integer count = countFilms.get(films.get(user[i]));
+            for (int j : user) {
+                Integer count = countFilms.get(films.get(j));
 
                 if (count != null) {
 
-                    countFilms.put(films.get(user[i]), count + 1);
+                    countFilms.put(films.get(j), count + 1);
                 }
             }
         }
@@ -78,15 +77,16 @@ public class MovieRecommendations {
     private Set<Integer> removeRepetitions(List<int[]> similarUsers) {
         Set<Integer> moviesWithoutRepetions = new HashSet<>();
         for (int[] user : similarUsers) {
-            for (int i = 0; i < user.length; i++) {
+            for (int k : user) {
                 boolean flag = false;
-                for (int j = 0; j < userMovies.size(); j++) {
-                    if (user[i] == userMovies.get(j)) {
+                for (Integer userMovie : userMovies) {
+                    if (k == userMovie) {
                         flag = true;
+                        break;
                     }
                 }
-                if (flag == false) {
-                    moviesWithoutRepetions.add(user[i]);
+                if (!flag) {
+                    moviesWithoutRepetions.add(k);
                 }
 
             }
@@ -103,12 +103,11 @@ public class MovieRecommendations {
         List<int[]> similarUsers = new ArrayList<>();
         for (int[] user : users) {
             List<Integer> viewedMovies = new ArrayList<>();
-            int counter = 0;
 
-            for (int i = 0; i < user.length; i++) {
-                for (int j = 0; j < userMovies.size(); j++) {
-                    if (user[i] == userMovies.get(j)) {
-                        viewedMovies.add(user[i]);
+            for (int k : user) {
+                for (Integer userMovie : userMovies) {
+                    if (k == userMovie) {
+                        viewedMovies.add(k);
 
                     }
                 }
