@@ -6,8 +6,7 @@ public class Lot {
     private volatile float currentValue;
     private volatile String username;
     private final LocalTime endTimeTrading;
-
-    private final Object lock = new Object();
+    
 
     /**
      * Создаёт новый {@code Lot}
@@ -23,7 +22,7 @@ public class Lot {
     public void placeBet(int newValue, String newUsername) {
 
         LocalTime time = LocalTime.now();
-        synchronized (lock) {
+        synchronized (this) {
             if ((newValue > currentValue) && (time.isBefore(endTimeTrading))) {
                 //синхронизация позволяет добиться потокобезопасности метода
                 currentValue = newValue;// чтобы пользователи могли одновременно делать ставка
