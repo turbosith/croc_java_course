@@ -7,7 +7,7 @@ public class Lot {
     private volatile String username;
     private final LocalTime endTimeTrading;
 
-    private static final Object lock = new Object();
+    private final Object lock = new Object();
 
     /**
      * Создаёт новый {@code Lot}
@@ -36,7 +36,7 @@ public class Lot {
 
     public String getUsername() {
         LocalTime time = LocalTime.now();
-        if (time.isBefore(endTimeTrading)) {
+        if (endTimeTrading.isBefore(time)) {
             return username;
         } else {
             System.out.println("Торги ещё ведутся, победитель не установлен");
