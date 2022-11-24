@@ -20,20 +20,19 @@ public class CommentsFilter implements BlackListFilter {
         for (String comment : comments) {
             for (String blackWord : blackList) {
                 //делаем все буквы строчными, чтобы затронуть плохие слова с заглавной буквы
-                String CommentLowerCase=comment.toLowerCase();
-                int blackWordIndex=CommentLowerCase.indexOf(blackWord);//индекс плохого слова
-                if (blackWordIndex!=-1) {//проверка содержит ли комментарий плохое слово
+                String CommentLowerCase = comment.toLowerCase();
+                int blackWordIndex = CommentLowerCase.indexOf(blackWord);//индекс плохого слова
+                if (blackWordIndex != -1) {//проверка содержит ли комментарий плохое слово
                     //проверка, можем ли мы получить предыдущий и последующий символы
                     if (blackWordIndex != 0) {
                         asciiFrontChar = CommentLowerCase.charAt(blackWordIndex - 1);
                     }
-                    if (blackWordIndex + blackWord.length() != CommentLowerCase.length() ) {
+                    if (blackWordIndex + blackWord.length() != CommentLowerCase.length()) {
                         asciiBackChar = CommentLowerCase.charAt(blackWordIndex +
                                 blackWord.length());
                     }
                     if (!(isCharLetter(asciiFrontChar)) & //проверка, не содержится ли наше слово в другом
-                            !(isCharLetter(asciiBackChar)))
-                    {
+                            !(isCharLetter(asciiBackChar))) {
                         badComments.add(comment);//добавление в список плохих комментариев
                     }
                 }
@@ -41,6 +40,7 @@ public class CommentsFilter implements BlackListFilter {
         }
         comments.removeAll(badComments);//удаление всех плохих комментариев
     }
+
     /**
      * Проверяет буква сивол или нет(работает на английском и русском языках)
      *
