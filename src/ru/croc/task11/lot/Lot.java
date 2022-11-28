@@ -6,7 +6,7 @@ public class Lot {
     private volatile float currentValue;
     private volatile String username;
     private final LocalTime endTimeTrading;
-    
+
 
     /**
      * Создаёт новый {@code Lot}

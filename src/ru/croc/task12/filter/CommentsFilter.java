@@ -19,16 +19,14 @@ public class CommentsFilter implements BlackListFilter {
         int asciiBackChar = 0;//ASCII последующего символа
         for (String comment : comments) {
             for (String blackWord : blackList) {
-                //делаем все буквы строчными, чтобы затронуть плохие слова с заглавной буквы
-                String CommentLowerCase = comment.toLowerCase();
-                int blackWordIndex = CommentLowerCase.indexOf(blackWord);//индекс плохого слова
+                String commentLowerCase = comment.toLowerCase(); //делаем все буквы строчными
+                int blackWordIndex = commentLowerCase.indexOf(blackWord);//индекс плохого слова
                 if (blackWordIndex != -1) {//проверка содержит ли комментарий плохое слово
-                    //проверка, можем ли мы получить предыдущий и последующий символы
-                    if (blackWordIndex != 0) {
-                        asciiFrontChar = CommentLowerCase.charAt(blackWordIndex - 1);
+                    if (blackWordIndex != 0) {//проверка, можем ли мы получить предыдущий и последующий символы
+                        asciiFrontChar = commentLowerCase.charAt(blackWordIndex - 1);
                     }
-                    if (blackWordIndex + blackWord.length() != CommentLowerCase.length()) {
-                        asciiBackChar = CommentLowerCase.charAt(blackWordIndex +
+                    if (blackWordIndex + blackWord.length() != commentLowerCase.length()) {
+                        asciiBackChar = commentLowerCase.charAt(blackWordIndex +
                                 blackWord.length());
                     }
                     if (!(isCharLetter(asciiFrontChar)) & //проверка, не содержится ли наше слово в другом
