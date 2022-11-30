@@ -4,19 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OrganizationDepartment {
-private OrganizationDepartment parent = null;
-private int time;
-List<OrganizationDepartment> childrens = new ArrayList<>();
+    private final String parent;
+    private final int time;
+    private final String departamentName;
+    List<OrganizationDepartment> childrens = new ArrayList<>();
 
-    public void setParent(OrganizationDepartment parent) {
-        this.parent = parent;
-    }
 
-    public void setTime(int time) {
-        this.time = time;
-    }
-
-    public OrganizationDepartment getParent() {
+    public String getParent() {
         return parent;
     }
 
@@ -24,17 +18,21 @@ List<OrganizationDepartment> childrens = new ArrayList<>();
         return time;
     }
 
-    public OrganizationDepartment(OrganizationDepartment parent, int time){
-    if (parent!=null){
-        this.parent=parent;
+    public OrganizationDepartment(String departamentName, String parent, int time) {
+        this.parent = parent;
+        this.departamentName = departamentName;
+        this.time = time;
     }
-    this.time=time;
-}
 
     public List<OrganizationDepartment> getChildrens() {
         return childrens;
     }
-    public void addChildren(OrganizationDepartment organizationDepartment){
+
+    public String getDepartamentName() {
+        return departamentName;
+    }
+
+    public void addChildren(OrganizationDepartment organizationDepartment) {
         childrens.add(organizationDepartment);
     }
 }
