@@ -10,7 +10,12 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class ReadLogs {
-
+    /**
+     * Прохождение по файлам директории и проверка типа файлов
+     *
+     * @param path - путь к директории с файлами
+     * @return - список файлов с нужным типом
+     */
     public List<File> readFilesFromDirectory(Path path) {
         File dir = new File(path.toUri()); //path указывает на директорию
         List<File> lst = new ArrayList<>();
@@ -23,6 +28,13 @@ public class ReadLogs {
         return lst;
     }
 
+    /**
+     * Считывание логов из файлов
+     *
+     * @param path - путь к директории с логами
+     * @return - список логов
+     * @throws FileNotFoundException - ошибка не нахождения файла
+     */
     public List<Log> readLogs(Path path) throws FileNotFoundException {
         List<Log> logList = new ArrayList<>();
         List<File> lst = readFilesFromDirectory(path);
