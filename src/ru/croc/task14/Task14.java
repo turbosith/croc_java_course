@@ -1,4 +1,4 @@
-package ru.croc.task12;
+package ru.croc.task14;
 
 import ru.croc.task14.filter.CommentsFilter;
 
@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class Task12 {
+public class Task14 {
     public static void main(String[] args) {
         List<String> comments = new ArrayList<>();
         comments.add("The devil was very angry");

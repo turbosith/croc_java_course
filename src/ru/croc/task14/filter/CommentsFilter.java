@@ -1,10 +1,10 @@
-package ru.croc.task12.filter;
+package ru.croc.task14.filter;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-public class CommentsFilter implements BlackListFilter {
+public class CommentsFilter implements BlackListFilter<String> {
     /**
      * @param comments  list of comments; every comment
      *                  is a sequence of words, separated
@@ -12,8 +12,7 @@ public class CommentsFilter implements BlackListFilter {
      * @param blackList list of words that should not
      *                  be present in a comment
      */
-    @Override
-    public void filterComments(List<String> comments, Set<String> blackList) {
+    public  void filterComments(List<String> comments, Set<String> blackList) {
         List<String> badComments = new ArrayList<>();//список плохих комментариев
         int asciiFrontChar = 0;//ASCII код предыдущего перед словом символа
         int asciiBackChar = 0;//ASCII последующего символа

@@ -1,4 +1,4 @@
-package ru.croc.Task13;
+package ru.croc.task13;
 
 import java.io.*;
 import java.util.*;
