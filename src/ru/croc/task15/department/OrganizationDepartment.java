@@ -7,7 +7,7 @@ public class OrganizationDepartment {
     private final String parent;
     private final int time;
     private final String departamentName;
-    List<OrganizationDepartment> childrens = new ArrayList<>();
+    private final List<OrganizationDepartment> childrens = new ArrayList<>();
 
 
     public String getParent() {
@@ -35,4 +35,18 @@ public class OrganizationDepartment {
     public void addChildren(OrganizationDepartment organizationDepartment) {
         childrens.add(organizationDepartment);
     }
+
+    /**
+     * Вычисление время работы департамента
+     *
+     * @return - количество часов работы
+     */
+    public int departementWorkTime() {
+        int workTime = 0;
+        for (OrganizationDepartment organizationDepartment : getChildrens()) {
+            workTime = Math.max(workTime, organizationDepartment.departementWorkTime());
+        }
+        return workTime + getTime();
+    }
+
 }

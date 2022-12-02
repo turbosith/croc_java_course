@@ -14,7 +14,7 @@ public class Task15 {
         String fileName = s.nextLine();
         DepartamentTree departamentTree = new DepartamentTree();
         departamentTree.readConfiguration(fileName);
-        System.out.println(departamentTree.workTime(departamentTree.getRootParent()));
+        System.out.println(departamentTree.departamentTreeWorkTime());
 
 
     }

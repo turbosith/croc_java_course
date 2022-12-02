@@ -8,8 +8,8 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class DepartamentTree {
-    HashMap<String, OrganizationDepartment> tree = new HashMap<>();
-    OrganizationDepartment rootParent;
+    private final HashMap<String, OrganizationDepartment> tree = new HashMap<>();
+    private OrganizationDepartment rootParent;
 
     /**
      * Читает конфигурацию и заполняет дерево департаменентов, учавствующих в работе
@@ -37,23 +37,11 @@ public class DepartamentTree {
     }
 
 
-    public OrganizationDepartment getRootParent() {
-        return rootParent;
+    public int departamentTreeWorkTime() {
+        return rootParent.departementWorkTime();
     }
 
-    /**
-     * Вычисление время работы
-     *
-     * @param rootParent - корень
-     * @return - количество часов работы
-     */
-    public int workTime(OrganizationDepartment rootParent) {
-        int workTime = 0;
-        for (OrganizationDepartment organizationDepartment : rootParent.getChildrens()) {
-            workTime = Math.max(workTime, workTime(organizationDepartment));
-        }
-        return workTime + rootParent.getTime();
-    }
+
 }
 
 
