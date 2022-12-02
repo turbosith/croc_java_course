@@ -1,4 +1,4 @@
-package ru.croc.task14.filter;
+package ru.croc.task14;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,13 +16,15 @@ public interface BlackListFilter<T> {
      * @param predicate predicate of words that should not
      *                  be present in a comment
      */
-    default void filterComments(Iterable<T> comments, Predicate<T> predicate){
+    default List<T> filterComments(Iterable<T> comments, Predicate<T> predicate){
         List<T> goodCommentsList = new ArrayList<>();
         for(T comment:comments){
-            if (predicate.test(comment)){
+            if (!predicate.test(comment)){
                 goodCommentsList.add(comment);
             }
         }
+        return goodCommentsList;
     }
+
 
 }
