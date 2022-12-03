@@ -100,9 +100,13 @@ public class MovieRecommendations {
      * @return - просмотры похожих зрителей
      */
     private List<int[]> coincidences() {
+        Set<Integer> userMoviesSet = new HashSet<>();
+        for (Integer userMovie : userMovies) {
+            userMoviesSet.add(userMovie);
+        }
         List<int[]> similarUsers = new ArrayList<>();
         for (int[] user : users) {
-            List<Integer> viewedMovies = new ArrayList<>();
+            Set<Integer> viewedMovies = new HashSet<>();
 
             for (int k : user) {
                 for (Integer userMovie : userMovies) {
@@ -111,10 +115,10 @@ public class MovieRecommendations {
 
                     }
                 }
-
             }
 
-            if (viewedMovies.size() >= userMovies.size() / 2) {
+            if (viewedMovies.size() >= userMoviesSet.size() / 2.0) {
+
                 similarUsers.add(user);
 
             }
