@@ -1,53 +1,79 @@
 package ru.croc.task16;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.*;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Scanner;
 
 public class ReadLogs {
-    /**
-     * Прохождение по файлам директории и проверка типа файлов
-     *
-     * @param path - путь к директории с файлами
-     * @return - список файлов с нужным типом
-     */
-    public List<File> readFilesFromDirectory(Path path) {
-        File dir = new File(path.toUri()); //path указывает на директорию
-        List<File> lst = new ArrayList<>();
-        for (File file : Objects.requireNonNull(dir.listFiles())) {
-            if (file.isFile() && ((file.getName().endsWith(".log")) ||
-                    (file.getName().endsWith(".trace")))) {
-                lst.add(file);
-            }
-        }
-        return lst;
-    }
+
 
     /**
-     * Считывание логов из файлов
+     * Рекурсионное прохождение по файлам директории и поддиректорий, проверка типа файлов
      *
-     * @param path - путь к директории с логами
+     * @param path - путь к директории с файлами
+     */
+    public void readFilesFromDirectory(Path path) throws IOException {
+        File finalLogFile = new File("Task16/logs/final_log.log");
+        BufferedWriter writer = new BufferedWriter(new FileWriter(finalLogFile, true));
+        File directory = new File(path.toUri()); //path указывает на директорию
+        File[] folderEntries = directory.listFiles();
+        assert folderEntries != null;
+        for (File entry : folderEntries) {
+            if (entry.isDirectory()) {
+                readFilesFromDirectory(entry.toPath());
+            } else {
+                if (entry.isFile() && ((entry.getName().endsWith(".log")) |
+                        (entry.getName().endsWith(".trace")) | (entry.getName().endsWith(".LOG")))) {
+
+                    try (Scanner s = new Scanner(new FileReader(entry))) {
+                        while (s.hasNextLine()) {
+                            String scan = s.nextLine();
+
+                            writer.append(scan).append(" ");//запись лога в буфер, чтобы не тратить оперативную память
+
+
+                        }
+                    }
+
+
+                }
+
+            }
+
+        }
+        writer.close();//закрывание буфера
+
+    }
+
+
+    /**
+     * Считывание логов из буфера
+     *
      * @return - список логов
      * @throws FileNotFoundException - ошибка не нахождения файла
      */
-    public List<Log> readLogs(Path path) throws FileNotFoundException {
+    public List<Log> readLogs() throws FileNotFoundException {
         List<Log> logList = new ArrayList<>();
-        List<File> lst = readFilesFromDirectory(path);
-        for (File file : lst) {
-            try (Scanner s = new Scanner(new FileReader(file))) {
-                while (s.hasNextLine()) {
-                    String scan = s.nextLine();
-                    String[] logParts = scan.split(" ");
-                    Log log = new Log(Long.parseLong(logParts[0]), logParts[1]);
-                    logList.add(log);
-                }
+        File logFile = new File("Task16/logs/final_log.log");
+
+        try (Scanner s = new Scanner(new FileReader(logFile))) {
+
+            String scan = s.nextLine();
+            String[] logParts = scan.split(" ");
+            for (int i = 0; i < logParts.length - 1; i++) {
+                Log log = new Log(Long.parseLong(logParts[i]), logParts[i + 1]);
+                logList.add(log);
+                i += 1;
             }
+
+
         }
+        PrintWriter writer = new PrintWriter(logFile);//очистка буфера
+        writer.print("");
+        writer.close();
+
         return logList;
     }
 

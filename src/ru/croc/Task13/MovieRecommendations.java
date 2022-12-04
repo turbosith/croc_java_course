@@ -100,10 +100,7 @@ public class MovieRecommendations {
      * @return - просмотры похожих зрителей
      */
     private List<int[]> coincidences() {
-        Set<Integer> userMoviesSet = new HashSet<>();
-        for (Integer userMovie : userMovies) {
-            userMoviesSet.add(userMovie);
-        }
+        Set<Integer> userMoviesSet = new HashSet<>(userMovies);
         List<int[]> similarUsers = new ArrayList<>();
         for (int[] user : users) {
             Set<Integer> viewedMovies = new HashSet<>();
