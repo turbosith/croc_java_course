@@ -30,8 +30,9 @@ public class ReadLogs {
             if (entry.isDirectory()) {
                 readFilesFromDirectory(entry.toPath());
             } else {
-                if (entry.isFile() && ((entry.getName().endsWith(".log")) |
-                        (entry.getName().endsWith(".trace")) | (entry.getName().endsWith(".LOG")))) {
+                String entryLowerCase=entry.getName().toLowerCase();
+                if (entry.isFile() && ((entryLowerCase.endsWith(".log")) |
+                        (entryLowerCase.endsWith(".trace")))) {
 
                     firstBypass(entry);//записываем первичные данные файла
 
@@ -52,7 +53,7 @@ public class ReadLogs {
      * @throws IOException - ошибка ввода вывода
      */
     public void outLogs() throws IOException {
-        long maxTime = 1969778144951L;//максимальное время, для инициализации минимума
+        long maxTime = 9999999999999L;//максимальное время, для инициализации минимума
 
 
         LogComparator logComparator = new LogComparator();
@@ -96,6 +97,9 @@ public class ReadLogs {
             String[] logParts = scan.split(" ");
 
             return new Log(Long.parseLong(logParts[0]), logParts[1]);
+        }
+        else {
+            bufferedReader.close();
         }
         return null;
 
