@@ -53,7 +53,7 @@ public class ReadLogs {
      * @throws IOException - ошибка ввода вывода
      */
     public void outLogs() throws IOException {
-        long maxTime = 9999999999999L;//максимальное время, для инициализации минимума
+        long maxTime = Long.MAX_VALUE;//максимальное время, для инициализации минимума
 
 
         LogComparator logComparator = new LogComparator();
