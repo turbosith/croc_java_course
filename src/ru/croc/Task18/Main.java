@@ -30,15 +30,13 @@ public class Main {
     }
 
     private static void test(Connection connection) throws SQLException {
-        DAO dao = new DAO(connection);
+        ProductDAO dao = new ProductDAO(connection);
 
-        Product product = dao.findProduct("Т3");
+        Product product = dao.findProduct("Т2");
         System.out.println(product);
-        List<Product> productList = new ArrayList<>();
-        productList.add(product);
-        productList.add(product);
 
-        System.out.println(product);
+
+
 
     }
 

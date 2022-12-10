@@ -76,6 +76,8 @@ public class Main {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(JOIN_PRODUCTS_AND_ORDERS);
             printResult(resultSet);
+            statement.close();
+            resultSet.close();
         }
     }
 
