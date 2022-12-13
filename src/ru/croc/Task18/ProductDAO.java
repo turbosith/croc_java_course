@@ -1,5 +1,6 @@
 package ru.croc.Task18;
 
+import java.io.IOException;
 import java.sql.*;
 
 public class ProductDAO {
@@ -38,7 +39,7 @@ public class ProductDAO {
             preparedStatement.close();
             return product;
         } else {
-            return null;
+            throw new SQLException("Продукт уже существует");
         }
 
 
