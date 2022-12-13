@@ -34,8 +34,11 @@ public class Main {
 
         Product product = dao.findProduct("Т2");
         System.out.println(product);
-
-
+        OrderDAO orderDAO = new OrderDAO(connection);
+        List<Product> products = new ArrayList<>();
+        products.add(new Product(13, "Т5", "Видеокарта", 15000));
+        products.add(new Product(14, "Т5", "Видеокарта", 15000));
+        System.out.println(orderDAO.createOrder("turbo", products));
 
 
     }

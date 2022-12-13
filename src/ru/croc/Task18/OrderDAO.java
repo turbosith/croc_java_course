@@ -4,15 +4,16 @@ import java.sql.*;
 import java.util.List;
 
 public class OrderDAO {
-    public OrderDAO(Connection connection){
+    public OrderDAO(Connection connection) {
         this.connection = connection;
     }
-    private Connection connection;
-    private Statement statement;
+
+    private final Connection connection;
     private static final String INSERT_ORDER = "INSERT INTO order1 (orderNumber, buyer,articulate) VALUES(?, ?, ?);";
+
     public Order createOrder(String userLogin, List<Product> products) throws SQLException {
         int orderNumber;
-        statement = connection.createStatement();
+        Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery("SELECT MAX(orderNumber) FROM order1");
         resultSet.next();
         orderNumber = resultSet.getInt(1) + 1;
@@ -24,7 +25,7 @@ public class OrderDAO {
             statement1.executeUpdate();
         }
         statement = connection.createStatement();
-        resultSet = statement.executeQuery(String.format("SELECT * FROM order1 o WHERE o.orderNumber = '%s'",orderNumber));
+        resultSet = statement.executeQuery(String.format("SELECT * FROM order1 o WHERE o.orderNumber = '%s'", orderNumber));
         statement1.close();
         statement.close();
         return new Order(resultSet);

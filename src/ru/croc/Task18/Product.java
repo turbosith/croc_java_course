@@ -4,10 +4,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Product {
-    private int id;
-    private  String articulate;
-    private String productName;
-    private int productPrice;
+    private final int id;
+    private final String articulate;
+    private final String productName;
+    private final int productPrice;
 
     public Product(int id, String articulate, String productName, int productPrice) {
         this.id = id;
@@ -15,12 +15,13 @@ public class Product {
         this.productName = productName;
         this.productPrice = productPrice;
     }
+
     public Product(ResultSet resultSet) throws SQLException {
         resultSet.next();
         id = resultSet.getInt(1);
-        articulate=resultSet.getString(2);
-        productName=resultSet.getString(3);
-        productPrice=resultSet.getInt(4);
+        articulate = resultSet.getString(2);
+        productName = resultSet.getString(3);
+        productPrice = resultSet.getInt(4);
 
 
     }
@@ -35,11 +36,9 @@ public class Product {
     }
 
 
-
     public String getProductName() {
         return productName;
     }
-
 
 
     public int getProductPrice() {
